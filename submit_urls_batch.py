@@ -26,7 +26,7 @@ languages = [
 
 SCOPES = [ "https://www.googleapis.com/auth/indexing" ]
 ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
-BASE_URL = "https://example.com/" # base URL to submit the URL
+BASE_URL = "https://example.com/" # base URL to submit the URL, includes trailing slash!
 
 # service_account_file.json is the private key that you created for your service account.
 JSON_KEY_FILE = os.environ.get('GOOGLE_KEY_JSON_FILE')
@@ -53,12 +53,12 @@ def callback(request_id, response, exception):
         print('request_id is: ', request_id)
         print('response is: ', response)
 
+batch = service.new_batch_http_request(callback=callback)
+
 def process(content):
     postBody = service.urlNotifications().publish(body = content)
     batch.add(postBody)
     batch.execute()
-
-batch = service.new_batch_http_request(callback=callback)
 
 with open('city.csv', newline='') as csvfile:
     city = csv.reader(csvfile, delimiter=',', quotechar='"')
