@@ -1,6 +1,7 @@
 from oauth2client.service_account import ServiceAccountCredentials
 import httplib2
 import csv
+import os
 import json
 
 languages = [
@@ -24,6 +25,7 @@ languages = [
 
 SCOPES = [ "https://www.googleapis.com/auth/indexing" ]
 ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
+BASE_URL = 'https://www.example.com/' # need trailing slash
 
 # service_account_file.json is the private key that you created for your service account.
 JSON_KEY_FILE = os.environ.get('GOOGLE_KEY_JSON_FILE')
@@ -41,9 +43,9 @@ with open('city.csv', newline='') as csvfile:
     for row in city:
         city = row[0].replace(' ', '-').lower()
         for x in languages:
-            url = 'https://www.tutoroo.co/' + x + '-tutor-' + city
+            url = BASE_URL + x + '-tutor-' + city
             print(url)
-            urls.append('https://www.tutoroo.co/' + x + '-tutor-' + city)
+            urls.append(url) # for counting later
             content = {"url": url, "type": "URL_UPDATED"}
             content_object = json.dumps(content, indent = 4) 
             response, content = http.request(ENDPOINT, method="POST", body=content_object)

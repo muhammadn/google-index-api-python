@@ -3,7 +3,6 @@ import httplib2
 import csv
 import json
 import os
-from googleapiclient.http import BatchHttpRequest
 
 languages = [
   'english',
@@ -26,7 +25,7 @@ languages = [
 
 SCOPES = [ "https://www.googleapis.com/auth/indexing" ]
 ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
-BASE_URL = "https://www.tutoroo.co/" # base URL to submit the URL
+BASE_URL = "https://example.com/" # base URL to submit the URL
 
 # service_account_file.json is the private key that you created for your service account.
 JSON_KEY_FILE = os.environ.get('GOOGLE_KEY_JSON_FILE')
@@ -67,10 +66,10 @@ with open('city.csv', newline='') as csvfile:
             content_array.append(content)
 
 for i in range(0,len(content_array), 1000):
-    #batch = BatchHttpRequest(callback=callback)
     content_array = content_array[i:i+1000]
     for x in content_array:
         postBody = service.urlNotifications().publish(body=x)
         batch.add(postBody)
     batch.execute(http=http)
+
 print("number of URLs: " + str(len(urls)))
