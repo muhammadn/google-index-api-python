@@ -53,6 +53,11 @@ def callback(request_id, response, exception):
         print('request_id is: ', request_id)
         print('response is: ', response)
 
+def process(content):
+    postBody = service.urlNotifications().publish(body = content)
+    batch.add(postBody)
+    batch.execute()
+
 batch = service.new_batch_http_request(callback=callback)
 
 with open('city.csv', newline='') as csvfile:
@@ -66,11 +71,9 @@ with open('city.csv', newline='') as csvfile:
             content = {"url": url, "type": "URL_UPDATED"}
             content_array.append(content)
 
-for i in range(0,len(content_array), 1000):
-    content_array = content_array[i:i+1000]
-    for x in content_array:
-        postBody = service.urlNotifications().publish(body=x)
-        batch.add(postBody)
-    batch.execute(http=http)
+for i in range(0, len(content_array), 1000):
+    print('Sending to Google Index API...')
+    process(content_array[i:i+1000])
+    print('Done')
 
 print("number of URLs: " + str(len(urls)))
