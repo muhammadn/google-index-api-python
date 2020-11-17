@@ -1,6 +1,6 @@
 ### Sample code to submit URLs to Google Index API
 
-Had written this code for a client that needed to tell Google to index their URLs via the Google Index API.
+Had written this code for a client that needed to tell Google to index some of their URLs via the Google Index API.
 There weren't any good examples, so i thought of showing to someone who might need to do it in Python.
 
 ###### Installation
