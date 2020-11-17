@@ -25,7 +25,7 @@ languages = [
 
 SCOPES = [ "https://www.googleapis.com/auth/indexing" ]
 ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
-BASE_URL = 'https://www.example.com/' # need trailing slash
+BASE_URL = 'https://example.com/' # need trailing slash
 
 # service_account_file.json is the private key that you created for your service account.
 JSON_KEY_FILE = os.environ.get('GOOGLE_KEY_JSON_FILE')

@@ -19,7 +19,7 @@ languages = [
 ]
 
 urls = []
-BASE_URL = "https://www.tutoroo.co/" # base URL to submit the URL
+BASE_URL = "https://example.com/" # base URL to submit the URL
 
 with open('city.csv', newline='') as csvfile:
     city = csv.reader(csvfile, delimiter=',', quotechar='"')
