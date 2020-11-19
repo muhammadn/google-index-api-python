@@ -59,7 +59,7 @@ def chunks(lst, n):
 def process(content):
     urls = list(chunks(content, 1000))
     for x in urls:
-        print('Submitting URL to Google Index API in batches of 10000')
+        print('Submitting URL to Google Index API in batches of 1000')
         print('Now running ' + str(len(x)) + ' URLs')
         batch = service.new_batch_http_request(callback=callback)
         for y in x:
