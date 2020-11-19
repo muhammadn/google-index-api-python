@@ -4,16 +4,15 @@ Had written this code for a client that needed to tell Google to index some of t
 There weren't any good examples, so i thought of showing to someone who might need to do it in Python.
 
 ###### Installation
-1.
+1. Bootstrap the dependencies
 ```
 pip install -r requirements.txt
 ```
-2. 
+2. Set the path of your Google JSON Key crendential file
 ```
 export GOOGLE_KEY_JSON_FILE="/path/of/your/google/json/key/file
 ```
-3.
-Change `BASE_URL` to your domain (including the trailing slash!)
+3. Change `BASE_URL` to your domain (including the trailing slash!)
 
 Then modify the script as you would like.
 
