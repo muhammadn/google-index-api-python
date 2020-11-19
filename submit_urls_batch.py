@@ -62,7 +62,6 @@ def process(content):
         print('Submitting URL to Google Index API in batches of 10000')
         print('Now running ' + str(len(x)) + ' URLs')
         batch = service.new_batch_http_request(callback=callback)
-        urldata = []
         for y in x:
             postBody = service.urlNotifications().publish(body = y)
             batch.add(postBody)
