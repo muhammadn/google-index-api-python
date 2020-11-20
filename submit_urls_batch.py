@@ -3,7 +3,6 @@
 from oauth2client.service_account import ServiceAccountCredentials
 import httplib2
 import csv
-import json
 import os
 from googleapiclient.discovery import build
 
