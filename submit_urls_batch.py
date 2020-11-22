@@ -48,6 +48,7 @@ def callback(request_id, response, exception):
     # Do something with the exception
     #   pass
         print('An exception occurred: ', exception)
+    else:
     #   pass
         print('request_id is: ', request_id)
         print('response is: ', response)
